@@ -1,0 +1,12 @@
+<svg
+  viewBox="-76 -136 406 406"
+>
+  {/* Oberster Balken */}
+  <polygon points="0,0 240,0 220,40 20,40" fill="#32CD32" />
+
+  {/* Mittlerer Balken */}
+  <polygon points="60,70 180,70 180,100 60,100" fill="#1E90FF" />
+
+  {/* Unterster Balken (bis zur Spitze) */}
+  <polygon points="20,130 220,130 240,170 0,170" fill="#32CD32" />
+</svg>
