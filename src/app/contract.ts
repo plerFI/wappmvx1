@@ -8,3 +8,5 @@ const contract = getContract({
     chain: defineChain(8453),
     address: 'process.env.NEXT_PUBLIC_Contract_Adress',
   });
+
+  export default contract
