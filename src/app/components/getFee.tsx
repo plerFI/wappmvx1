@@ -37,7 +37,7 @@ export function useCombinedFee() {
 export default function FeeComponent() {
   const { fee, isLoading } = useCombinedFee();
 
-  if (isLoading) return <p>Lade Gebühren...</p>;
+  if (isLoading) return <p>load Fees...</p>;
 
   return (
     <div>
