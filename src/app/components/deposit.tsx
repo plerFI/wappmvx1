@@ -2,7 +2,7 @@ import { prepareContractCall } from "thirdweb";
 import { useSendTransaction } from "thirdweb/react";
 import  contract from "../contract";
 
-export default function Component() {
+export default function Deposit() {
   const { mutate: sendTransaction } = useSendTransaction();
 
   const onClick = () => {
