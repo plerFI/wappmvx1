@@ -4,8 +4,6 @@ import { darkTheme } from "thirdweb/react";
 import { createWallet } from "thirdweb/wallets";
 import { client } from "../client";
 
-import Link from "next/link";
-
 const links = {
   termsOfServiceUrl: "/termsofservice",
   privacyPolicyUrl: "/privacypolicy",
