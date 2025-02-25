@@ -2,13 +2,16 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThirdwebProvider } from "thirdweb/react";
+import Navbar from "../app/components/Navbar";
+import App from "./App";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "thirdweb SDK + Next starter",
+  title: "VaultFIxBeefy",
   description:
-    "Starter template for using thirdweb SDK with Next.js App router",
+    "An MetaVault with Beefy Vaults",
 };
 
 export default function RootLayout({
@@ -19,7 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThirdwebProvider>{children}</ThirdwebProvider>
+        <ThirdwebProvider>
+          <Navbar />
+          <App>
+            {children}
+          </App>
+        </ThirdwebProvider>
       </body>
     </html>
   );
