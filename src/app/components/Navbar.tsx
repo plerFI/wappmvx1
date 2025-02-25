@@ -31,12 +31,12 @@ export default function Navbar() {
             Home
           </Link>
           <Link
-            href="/vault"
+            href="/metavault"
             className={`text-themeWhite transition-all ease-in duration-150 px-2 py-2 tracking-wide font-Pooppins text-sm font-semibold uppercase ${
-              pathname === "/vault" ? "text-themeGreen" : "hover:text-themeGreen"
+              pathname === "/metavault" ? "text-themeGreen" : "hover:text-themeGreen"
             }`}
           >
-            Vault
+            Meta-Vault
           </Link>
           <Link
             href="/swap"

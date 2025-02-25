@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from './Header'
-import ArticleCrd from './ArticleCrd'
+import Header from '../app/components/Header'
+import ArticleCrd from '../app/components/ArticleCrd'
 
 function Home() {
 	return (
