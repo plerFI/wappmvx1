@@ -13,10 +13,80 @@
 	font-optical-sizing: auto;
 	font-style: normal;
 	font-variation-settings: 'slnt' 0;
+		--themeblack: #222;
+		--themeblack2: #4e4e4e;
+		--themeGreen: #00c896;
+		--themeWhite: #f2ecff;	
 }
 
 @layer base {
 	body {
 		@apply bg-zinc-950 text-neutral-200;
 	}
+}
+
+
+
+@theme {
+    --font-Pooppins: 'Poppins', sans-serif;
+    --color-themeblack: var(--themeblack);
+    --color-themeGreen: var(--themeGreen);
+    --color-themeWhite: var(--themeWhite);
+    --color-themeblack2: var(--themeblack2);
+
+}
+
+
+body {
+    background-color: var(--themeblack);
+}
+
+.active {
+    color: var(--themeGreen);
+    opacity: 1 !important;
+    filter: drop-shadow(0 0 0.5rem var(--themeGreen));
+}
+
+
+
+.border-bottom::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px; /* The border thickness */
+    background: linear-gradient(90deg, #00031C 0%, #00c896 40%, #00031C 100%);
+  }
+
+
+
+  .tw-connect-wallet {
+    border-radius: calc(infinity * 1px) !important;
+    min-width: auto !important;
+    padding: 8px 16px !important;
+    height: auto !important;
+    background-color: var(--themeWhite) !important;
+    color: var(--themeblack) !important;
+    letter-spacing: 1px !important;
+    font-size: 14px !important;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600 !important;
+  }
+
+
+  input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;  /* For Chrome, Safari, Edge */
+  margin: 0;  /* Remove any margin */
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;  /* For Firefox */
+  appearance: textfield;       /* For modern browsers */
+}
+
+.no-scrollbar{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
