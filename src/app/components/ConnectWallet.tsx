@@ -4,6 +4,13 @@ import { darkTheme } from "thirdweb/react";
 import { createWallet } from "thirdweb/wallets";
 import { client } from "../client";
 
+import Link from "next/link";
+
+const links = {
+  termsOfServiceUrl: "/termsofservice",
+  privacyPolicyUrl: "/privacypolicy",
+};
+
 const wallets = [
   createWallet("io.metamask"),
   createWallet("com.coinbase.wallet"),
@@ -25,8 +32,8 @@ function ConnectWallet() {
       connectModal={{
         size: "compact",
         showThirdwebBranding: false,
-        termsOfServiceUrl: "vaultfi.pro/termsofservice",
-        privacyPolicyUrl: "vaultfi.pro/privacypolicy",
+        termsOfServiceUrl: "/termsofservice",
+        privacyPolicyUrl: "/privacypolicy",
       }}
     />
   );

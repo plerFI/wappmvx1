@@ -6,13 +6,13 @@ function ArticleCrd() {
         <div className="grid gap-4 lg:grid-cols-2 justify-center">
 			<ArticleCard
 				title="Launch Vault"
-				href="/Vault"
+				href="/metavault"
 				description="Get the maximum out of your USDC"
 			/>
 
 			<ArticleCard
 				title="Documentation"
-				href="/Docs"
+				href="/docs"
 				description="Learn why VaultFi exists and how it works"
 			/>
 		</div>
