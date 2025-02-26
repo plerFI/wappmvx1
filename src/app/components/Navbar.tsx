@@ -7,6 +7,7 @@ import { HiOutlineBars3BottomRight } from "react-icons/hi2";
 import { RxCross2 } from "react-icons/rx";
 import ConnectWallet from "./ConnectWallet";
 import DiscordButton from "./DiscordButton";
+import Image from "next/image";
 
 export default function Navbar() {
   const [drawer, setDrawer] = useState(false);
@@ -16,10 +17,10 @@ export default function Navbar() {
     <div className="flex justify-center w-full items-center fixed top-0 z-[99] bg-themeblack/90 border-bottom">
       <div className="sm:w-[1225px] w-full justify-between items-center px-4 py-4 sm:py-5 flex">
       <Link href="/">
-        <img 
-          src="/VaultFILogo.png" 
-          className="w-14 sm:w-18 relative z-[99]" 
-        />
+        <Image
+            src="/VaultFILogo.png"
+            className="w-14 sm:w-18 relative z-[99]" 
+            alt={""}        />
         </Link>
 
         <nav
