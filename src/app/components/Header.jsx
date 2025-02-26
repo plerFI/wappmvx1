@@ -1,17 +1,18 @@
 import React from 'react'
-import vaultfi from '../assets/VaultFILogo.png'
+import Image from "next/image";
 
 function Header() {
 	return (
 		<header className="flex flex-col items-center mb-10 md:mb-15 mt-0.5">
-			<img
-				src={vaultfi}
-				alt=""
-				className="size-[150px] md:size-[250px]"
-				style={{
-					filter: "drop-shadow(0px 0px 15px var(--themeGreen))",
-				}}
-			/>
+			<Image
+	src="/VaultFILogo.png"
+	alt="VaultFI Logo"
+	width={150} // Größe anpassen
+	height={150} // Muss definiert werden
+	style={{
+		filter: "drop-shadow(0px 0px 15px var(--themeGreen))",
+	}}
+/>
 
 			<h1 className="text-2xl md:text-6xl font-bold tracking-tighter mb-6 text-[#32CD32]">
 				Vault

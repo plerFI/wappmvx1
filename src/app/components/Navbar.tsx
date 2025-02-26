@@ -15,21 +15,26 @@ export default function Navbar() {
   return (
     <div className="flex justify-center w-full items-center fixed top-0 z-[99] bg-themeblack/90 border-bottom">
       <div className="sm:w-[1225px] w-full justify-between items-center px-4 py-4 sm:py-5 flex">
-        <img src="/VaultFILogo.png" className="w-14 sm:w-18 relative z-[99]" />
+      <Link href="/">
+        <img 
+          src="/VaultFILogo.png" 
+          className="w-14 sm:w-18 relative z-[99]" 
+        />
+        </Link>
 
         <nav
           className={`sm:static fixed flex justify-center sm:flex-row flex-col max-sm:h-screen max-sm:w-full max-sm:bg-themeblack ${
             drawer ? "max-sm:top-0" : "max-sm:top-[-2000px]"
           } transition-all ease-in duration-300 max-sm:left-0 items-center gap-4`}
         >
-          <Link
+         {/* <Link
             href="/"
             className={`text-themeWhite transition-all ease-in duration-150 px-2 py-2 tracking-wide font-Pooppins text-sm font-semibold uppercase ${
               pathname === "/" ? "text-themeGreen" : "hover:text-themeGreen"
             }`}
           >
             Home
-          </Link>
+          </Link>*/}
           <Link
             href="/metavault"
             className={`text-themeWhite transition-all ease-in duration-150 px-2 py-2 tracking-wide font-Pooppins text-sm font-semibold uppercase ${
