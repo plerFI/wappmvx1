@@ -20,7 +20,12 @@ export default function Navbar() {
         <Image
             src="/VaultFILogo.png"
             className="w-14 sm:w-18 relative z-[99]" 
-            alt={""}        />
+            width={150}
+            height={150}
+            alt={""}  
+            style={{
+              filter: "drop-shadow(0px 0px 12px var(--themeGreen))",
+            }}      />
         </Link>
 
         <nav

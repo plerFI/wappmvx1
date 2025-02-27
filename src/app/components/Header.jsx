@@ -7,8 +7,8 @@ function Header() {
 			<Image
 	src="/VaultFILogo.png"
 	alt="VaultFI Logo"
-	width={150} // Größe anpassen
-	height={150} // Muss definiert werden
+	width={150}
+	height={150}
 	style={{
 		filter: "drop-shadow(0px 0px 15px var(--themeGreen))",
 	}}
