@@ -1,5 +1,5 @@
 import { useReadContract } from "thirdweb/react";
-import contract from "../contract";
+import { contract } from "../contract";
 
 // Custom Hook, der alle Gebühren abruft und zusammenfasst
 export function useCombinedFee() {
