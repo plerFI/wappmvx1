@@ -1,5 +1,5 @@
 "use client";
-export default function swap() {
+export default function siteUnavailable() {
   return (
     <div className="flex justify-center items-center min-h-screen">
       <h1 className="text-xl text-red-500">This page is temporarily unavailable.</h1>

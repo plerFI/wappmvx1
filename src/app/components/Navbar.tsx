@@ -49,14 +49,14 @@ export default function Navbar() {
           >
             Meta-Vault
           </Link>
-          <Link
+          {/* <Link
             href="/swap"
             className={`text-themeWhite transition-all ease-in duration-150 px-2 py-2 tracking-wide font-Pooppins text-sm font-semibold uppercase ${
               pathname === "/swap" ? "text-themeGreen" : "hover:text-themeGreen"
             }`}
           >
             Swap
-          </Link>
+          </Link> */}
           <Link
             href="/docs"
             className={`text-themeWhite transition-all ease-in duration-150 px-2 py-2 tracking-wide font-Pooppins text-sm font-semibold uppercase ${
