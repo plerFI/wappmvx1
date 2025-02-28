@@ -2,15 +2,31 @@ import { getContract } from "thirdweb";
 import { defineChain } from "thirdweb/chains";
 import { client } from "./client"
 
-
-const cAddress = process.env.NEXT_PUBLIC_Contract_Address;
-
-if (!cAddress) {
-  throw new Error("No address provided");
+// Define the type for Vault contracts dynamically
+interface VaultContracts {
+  [key: string]: ReturnType<typeof getContract>;
 }
-// connect to your contract
-export const contract = getContract({
+
+// Vault Smart Contracts with the Thirdweb Client
+export const vaultContracts: VaultContracts = {
+  "vault-1": getContract({
     client,
-    chain: defineChain(8453),
-    address: cAddress,
-  });
+    address: "0x1234567890abcdef1234567890abcdef12345678", // Vault 1 Contract
+    chain: defineChain(8453), // Base Chain
+  }),
+  /* "vault-2": getContract({
+    client,
+    address: "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd", // Vault 2 Contract
+    chain: defineChain(8453), // Base Chain
+  }), */
+  /* "vault-3": getContract({
+    client,
+    address: "0x9876543210abcdef9876543210abcdef98765432", // Vault 3 Contract
+    chain: defineChain(8453), // Base Chain
+  }), */
+};
+
+// Function to get a contract for a specific Vault
+export function getVaultContract(vaultId: string) {
+  return vaultContracts[vaultId] || null;
+}

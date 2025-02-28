@@ -4,7 +4,6 @@ import "./globals.css";
 import { ThirdwebProvider } from "thirdweb/react";
 import App from "./App";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
