@@ -39,20 +39,37 @@ export default function VaultModal({ vaultId, onClose }: VaultModalProps) {
     if (!amount || isNaN(Number(amount))) return alert("❌ Please enter a valid amount.");
   
     try {
+      const client = useClient();
+      const chain = useChain();
+  
+      if (!client || !chain) {
+        return alert("❌ Client or Chain not found!");
+      }
+  
+      // Warte auf das Contract-Objekt
+      const contract = await getVaultContract(vaultId);
+      if (!contract) return alert("❌ Contract not found!");
+  
       const formattedAmount = parseUnits(amount, stablecoin.decimals);
   
-      const transaction = {
+      // Bereite die Transaktion vor
+      const transaction = prepareContractCall({
         contract,
         method: "deposit",
         params: [formattedAmount],
-      };
+        chain,
+        client,
+      });
   
+      // Sende die Transaktion
       const tx = await sendTransaction(transaction);
-      alert(`✅ Deposit successful! Transaction Hash: ${tx.transactionHash}`);
+  
+      alert(`✅ Deposit successful! Transaction Hash: ${tx.receipt.transactionHash}`);
     } catch (err) {
       alert(`❌ Error during deposit: ${err}`);
     }
   };
+  
   
   
 
