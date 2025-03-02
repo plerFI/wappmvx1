@@ -15,11 +15,11 @@ const PrivacyPolicy = () => {
       <p className="mb-4">
         The entity responsible for data processing on this website is:
         <br />
-        [Your Name / Your Company]
+        Pler / AuctOZ
         <br />
-        [Your Address]
+        
         <br />
-        [Contact Information, e.g. Email Address]
+        onecryp7o@gmail.com
       </p>
 
       <h2 className="text-2xl font-semibold mt-6 mb-3">2. Collection and Storage of Personal Data</h2>
@@ -49,9 +49,9 @@ const PrivacyPolicy = () => {
 
       <h2 className="text-2xl font-semibold mt-6 mb-3">Contact</h2>
       <p className="mb-4">
-        If you have any questions regarding privacy, please contact us at:
+        If you have any questions regarding privacy, please contact us at our discord server.
         <br />
-        [Your Contact Information, e.g. Email Address]
+        
       </p>
     </div>
   );

@@ -41,7 +41,7 @@ const TermsOfService = () => {
 
       <h2 className="text-2xl font-semibold mt-6 mb-3">7. Contact Information</h2>
       <p className="mb-4">
-        If you have any questions regarding these Terms of Service, please contact us at:
+        If you have any questions regarding these Terms of Service, please contact us at out Discord server.
         <br />
         [Your Contact Information]
       </p>

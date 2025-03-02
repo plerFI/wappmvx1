@@ -7,9 +7,9 @@ import App from "./App";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "VaultFIxBeefy",
+  title: "AuctOZxBeefy",
   description:
-    "An MetaVault with Beefy Vaults",
+    "An MetaVault for Beefy Vaults",
 };
 
 export default function RootLayout({

@@ -6,7 +6,7 @@ function Header() {
 		<header className="flex flex-col items-center mb-10 md:mb-15 mt-0.5">
 			<Image
 	src="/VaultFILogo.png"
-	alt="VaultFI Logo"
+	alt="AuctOZ Logo"
 	width={150}
 	height={150}
 	style={{
@@ -15,9 +15,9 @@ function Header() {
 />
 
 			<h1 className="text-2xl md:text-6xl font-bold tracking-tighter mb-6 text-[#32CD32]">
-				Vault
+				Auct
 				<span className="inline-block -skew-x-6 text-[#1E90FF]">
-				FI
+				OZ
 				</span>
 			</h1>
 

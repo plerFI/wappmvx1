@@ -13,7 +13,7 @@ function ArticleCrd() {
 			<ArticleCard
 				title="Documentation"
 				href="/docs"
-				description="Learn why VaultFi exists and how it works"
+				description="Learn why AuctOZ exists and how it works"
 			/>
 		</div>
 	);
