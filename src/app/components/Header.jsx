@@ -5,7 +5,7 @@ function Header() {
 	return (
 		<header className="flex flex-col items-center mb-10 md:mb-15 mt-0.5">
 			<Image
-	src="/auctoz_logo.png"
+	src="/AOZ.png"
 	alt="AuctOZ Logo"
 	width={150}
 	height={150}
@@ -14,12 +14,12 @@ function Header() {
 	}}
 />
 
-			<h1 className="text-2xl md:text-6xl font-bold tracking-tighter mb-6 text-[#32CD32]">
+			{/*<h1 className="text-2xl md:text-6xl font-bold tracking-tighter mb-6 text-[#32CD32]">
 				Auct
 				<span className="inline-block -skew-x-6 text-[#1E90FF]">
 				OZ
 				</span>
-			</h1>
+			</h1>*/}
 
 			<p className="text-white text-base">
 				Click on{" "}
