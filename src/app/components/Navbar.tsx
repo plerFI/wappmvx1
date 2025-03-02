@@ -18,7 +18,7 @@ export default function Navbar() {
       <div className="sm:w-[1225px] w-full justify-between items-center px-4 py-4 sm:py-5 flex">
       <Link href="/">
         <Image
-            src="/VaultFILogo.png"
+            src="/auctoz_logo.png"
             className="w-14 sm:w-18 relative z-[99]" 
             width={150}
             height={150}

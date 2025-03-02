@@ -5,7 +5,7 @@ function Header() {
 	return (
 		<header className="flex flex-col items-center mb-10 md:mb-15 mt-0.5">
 			<Image
-	src="/VaultFILogo.png"
+	src="/auctoz_logo.png"
 	alt="AuctOZ Logo"
 	width={150}
 	height={150}
