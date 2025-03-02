@@ -6,7 +6,7 @@ import { getVaultContract } from "../contract";
 import { prepareContractCall } from "thirdweb";
 import { useSendTransaction } from "thirdweb/react";
 import Image from "next/image";
-import { parseUnits } from "ethers/utils";  // Für ethers v6
+import { parseUnits } from "ethers/lib/utils"; 
 
 interface VaultModalProps {
   vaultId: string;
