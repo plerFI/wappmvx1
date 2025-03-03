@@ -1,20 +1,25 @@
 import { useContractEvents } from "thirdweb/react";
+import { getContract } from "thirdweb";
+import { base } from "thirdweb/chains";
 import { transferEvent } from "thirdweb/extensions/erc20";
-import { getVaultContract } from "@/app/contract";
-import { useVaultData } from "@/app/data";
 
-    function transactionlist(vaultId: string) {
-    let contract = getVaultContract(vaultId);
-    let name = useVaultData(vaultId);
+const usdcContractOnBase = getContract({
+  address: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  chain: base,
+  client,
+});
+
+function App() {
   // Listen to USDC transfers on Base
   const contractEvents = useContractEvents({
-    contract,
+    contract: usdcContractOnBase,
     events: [transferEvent()],
     blockRange: 100,
   });
 
   (contractEvents.data || []).forEach((item) => {
     const { from, to, value } = item.args;
-    console.log(`{from}...{value} ${name}...${vaultId}`);
+    console.log("{from}...{value} USDC...{to}");
   });
 }
+

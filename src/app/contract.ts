@@ -27,6 +27,6 @@ export const vaultContracts: VaultContracts = {
 };
 
 // Function to get a contract for a specific Vault
-export async function getVaultContract(vaultId: string) {
+export function getVaultContract(vaultId: string) {
   return vaultContracts[vaultId] ?? null;
 }
