@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import TransactionList from "./transactionlist"; // 🔹 Stelle sicher, dass der Pfad stimmt!
+import TransactionList from "./transactionlist";
 
 export default function VaultDetailPage() {
   const params = useParams();
