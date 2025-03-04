@@ -1,5 +1,4 @@
 "use client";
-
 import { useParams } from "next/navigation";
 import TransactionList from "./transactionlist"; // 🔹 Stelle sicher, dass der Pfad stimmt!
 
