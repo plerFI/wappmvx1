@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-function Docs() {
+export default function Docs() {
   const renderText = (text: string) => {
     return text.trim() ? (
       <p className="text-themeWhite font-Poppins text-sm font-normal">{text}</p>
@@ -57,5 +57,3 @@ function Docs() {
     </div>
   );
 }
-
-export default Docs;
