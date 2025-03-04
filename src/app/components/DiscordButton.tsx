@@ -1,8 +1,10 @@
 import React from "react";
 
+const link = process.env.NEXT_PUBLIC_TEMPLATE_DISCORD_LINK;
+
 function DiscordButton() {
   const handleDiscordClick = () => {
-    window.open("https://discord.gg/D57HvZz98x", "_blank");
+    window.open( link, "_blank");
   };
 
   return (
