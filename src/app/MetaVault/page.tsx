@@ -22,10 +22,10 @@ interface Vault {
 }
 
 const vaults: Vault[] = [
-  { id: "vault-1", image: vault1 },
-/*  { id: "vault-2", image: "vault2" }, */
-/*  { id: "vault-3", image: "vault3" }, */
-/*  { id: "vault-4", image: "vault4" }, */
+  { id: "base-vault", image: vault1 },
+/*  { id: "ethereum-vault", image: "vault2" }, */
+/*  { id: "arbitrum-vault", image: "vault3" }, */
+/*  { id: "optimistic-vault", image: "vault4" }, */
 /*  { id: "vault-6", image: "vault6" }, */
 /*  { id: "vault-7", image: "vault7" }, */
 /*  { id: "vault-8", image: "vault8" }, */

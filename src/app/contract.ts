@@ -9,20 +9,25 @@ interface VaultContracts {
 
 // Vault Smart Contracts with the Thirdweb Client
 export const vaultContracts: VaultContracts = {
-  "vault-1": getContract({
+  "base-vault": getContract({
     client,
     address: "0x1234567890abcdef1234567890abcdef12345678", // Vault 1 Contract
     chain: defineChain(8453), // Base Chain
   }),
-  /* "vault-2": getContract({
+  /* "ethereum-vault": getContract({
     client,
     address: "0xabcdefabcdefabcdefabcdefabcdefabcdefabcd", // Vault 2 Contract
-    chain: defineChain(8453), // Base Chain
+    chain: defineChain(1), // ethereum Chain
   }), */
-  /* "vault-3": getContract({
+  /* "arbitrum-vault": getContract({
     client,
     address: "0x9876543210abcdef9876543210abcdef98765432", // Vault 3 Contract
-    chain: defineChain(8453), // Base Chain
+    chain: defineChain(42161), // arbitrum Chain
+  }), */
+  /* "optimistic-vault": getContract({
+    client,
+    address: "0x9876543210abcdef9876543210abcdef98765432", // Vault 3 Contract
+    chain: defineChain(10), // optimistic Chain
   }), */
 };
 
