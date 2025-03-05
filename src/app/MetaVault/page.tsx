@@ -14,9 +14,9 @@ interface Vault {
 
 const vaults: Vault[] = [
   { id: "base-vault", chain: base },
-  { id: "ethereum-vault", chain: ethereum },
-  { id: "arbitrum-vault", chain: arbitrum },
-  { id: "optimism-vault", chain: optimism },
+ // { id: "ethereum-vault", chain: ethereum },
+ // { id: "arbitrum-vault", chain: arbitrum },
+ // { id: "optimism-vault", chain: optimism },
 ];
 
 function MetavaultList() {
