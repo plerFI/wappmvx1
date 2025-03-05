@@ -1,28 +1,32 @@
+// app/vaults/[vaultId]/page.jsx
 "use client";
-import { useParams } from "next/navigation";
-import TransactionList from "./transactionlist"; // 🔹 Stelle sicher, dass der Pfad stimmt!
+import TransactionList from "./transactionlist";
 
-export default function VaultDetailPage() {
-  const params = useParams();
-  const vaultId = Array.isArray(params.vaultId) ? params.vaultId[0] : params.vaultId;
+export async function generateStaticParams() {
+  return [
+    { vaultId: "base-vault" },
+    { vaultId: "ethereum-vault" },
+    { vaultId: "arbitrum-vault" },
+    { vaultId: "optimism-vault" }
+  ];
+}
 
+export default function VaultDetailPage({ params: { vaultId } }: { params: { vaultId: string } }) {
   if (!vaultId) {
     return (
       <div className="p-6 bg-gray-900 min-h-screen text-white">
-        <h1 className="text-3xl font-bold">Vault nicht gefunden</h1>
-        <p className="text-gray-400">Bitte überprüfe die URL.</p>
+        <h1 className="text-3xl font-bold">Vault not found</h1>
+        <p className="text-gray-400">Please check the URL.</p>
       </div>
     );
   }
 
   return (
     <div className="p-6 bg-gray-900 min-h-screen text-white">
-      <h1 className="text-3xl font-bold">Vault Details für {vaultId}</h1>
+      <h1 className="text-3xl font-bold">Vault Details for {vaultId}</h1>
       <p className="text-gray-400 mb-6">
-        Hier kommen die detaillierten Informationen über diesen Vault.
+        Detailed information about this vault will be displayed here.
       </p>
-
-      {/* 🔹 TransactionList dynamisch einfügen */}
       <TransactionList vaultId={vaultId} />
     </div>
   );
