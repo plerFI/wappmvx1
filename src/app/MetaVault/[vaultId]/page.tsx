@@ -1,4 +1,6 @@
 // app/vaults/[vaultId]/page.jsx
+import React from "react";
+
 export async function generateStaticParams() {
   return [
     { vaultId: "base-vault" },

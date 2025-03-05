@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useVaultData } from "../data"; 
+import React from "react";
 
 import { arbitrum, ethereum, optimism, base } from "thirdweb/chains";
 import { ChainProvider, ChainIcon } from "thirdweb/react";
@@ -18,7 +19,7 @@ const vaults: Vault[] = [
   { id: "optimism-vault", chain: optimism },
 ];
 
-export default function MetavaultList() {
+function MetavaultList() {
   return (
     <main className="p-4 min-h-screen flex flex-col items-center container max-w-screen-lg mx-auto">
       <div className="py-10">
@@ -72,3 +73,5 @@ function VaultCard({ vault }: { vault: Vault }) {
     </Link>
   );
 }
+
+export default MetavaultList;

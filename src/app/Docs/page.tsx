@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Docs() {
+function Docs() {
   const renderText = (text: string) => {
     return text.trim() ? (
       <p className="text-themeWhite font-Poppins text-sm font-normal">{text}</p>
@@ -22,7 +22,7 @@ export default function Docs() {
 
       {renderHeading("What is AuctOZ?", 3)}
       {renderText(
-        `AuctOZ acts as a delegator between 5 selected and modifiable lending pools or vaults. 
+        `AuctOZ acts as a delegator between the 3 best Beefy Pools. 
         The goal is to always deposit your money in the best pool and thereby get the maximum return. 
         AuctOZ is a project that is constantly being improved. The design has been kept simple and straightforward 
         for the beginning in order to make the functions available as quickly as possible.`
@@ -30,17 +30,15 @@ export default function Docs() {
 
       {renderHeading("Who is AuctOZ intended for?", 4)}
       {renderText(
-        `AuctOZ is for everyone on the Base network who wants to invest their USDC 
+        `AuctOZ is for everyone who uses Beefy and/or wants to invest their USDC 
         as simply and quickly as possible over the long term. Since AuctOZ only uses selected 
-        and verified pools, there is a high level of security.`
+        and stablecoin pools, there is a high level of security.`
       )}
 
       {renderHeading("How does AuctOZ work?", 5)}
       {renderText(
-        `Behind this web app is a complex SmartContract that delegates your investment. 
-        There are repeated test phases which test the return of the pools and then select the best pool in which 
-        the majority of the USDC are invested. A vault token is minted for all funds invested, 
-        which shows your vault volume. It also acts as a confirmation so that you can make a withdrawal.`
+        `Behind AuctOZ is a smartcontract wich interacts with the Beefy strategy.
+        AuctOZ automaticly searches for the best pools and delegates the usdc to them. `
       )}
 
       {renderHeading("What is the fee structure of AuctOZ?", 6)}
@@ -56,3 +54,5 @@ export default function Docs() {
     </div>
   );
 }
+
+export default Docs;
