@@ -10,7 +10,16 @@ export async function generateStaticParams() {
   ];
 }
 
-export default function VaultDetailPage({ params: { vaultId } }: { params: { vaultId: string } }) {
+export default async function VaultDetailPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ vaultId: string }>;
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  // Params werden hier asynchron aufgelöst:
+  const { vaultId } = await params;
+
   if (!vaultId) {
     return (
       <div className="p-6 bg-gray-900 min-h-screen text-white">

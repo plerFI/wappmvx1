@@ -49,7 +49,7 @@ function VaultCard({ vault }: { vault: Vault }) {
   }
 
   return (
-    <Link href={`/vaults/${vault.id}`} passHref>
+    <Link href={`/metavault/${vault.id}`} passHref>
       <div className="flex items-center p-4 border border-gray-700 rounded-lg hover:bg-gray-900 transition cursor-pointer">
         <ChainProvider chain={vault.chain}>
           <ChainIcon
