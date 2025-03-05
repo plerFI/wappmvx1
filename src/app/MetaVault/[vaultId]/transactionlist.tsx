@@ -1,4 +1,4 @@
-"use client"
+{/*"use client"
 import { useContractEvents } from "thirdweb/react";
 import { transferEvent } from "thirdweb/extensions/erc20";
 import { getVaultContract } from "@/app/contract";
@@ -34,8 +34,7 @@ import { useVaultData } from "@/app/data";
       )}
     </div>
   );
-}
-
+} */}
 
 
 

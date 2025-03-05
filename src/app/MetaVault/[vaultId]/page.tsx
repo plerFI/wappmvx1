@@ -1,6 +1,4 @@
 // app/vaults/[vaultId]/page.jsx
-import TransactionList from "./transactionlist";
-
 export async function generateStaticParams() {
   return [
     { vaultId: "base-vault" },
@@ -35,7 +33,6 @@ export default async function VaultDetailPage({
       <p className="text-gray-400 mb-6">
         Detailed information about this vault will be displayed here.
       </p>
-      <TransactionList vaultId={vaultId} />
     </div>
   );
 }
