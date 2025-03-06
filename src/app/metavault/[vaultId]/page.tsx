@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { getVaultContract } from "../../contract";
 import PanicMode from "./PanicMode";
-import Deposit from "./deposit";
-import Withdraw from "./withdraw";
+import Deposit from "./Deposit";
+import Withdraw from "./Withdraw";
 import Fees from "./Fees";
 import BestVaults from "./BestVaults";
 
