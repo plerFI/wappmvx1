@@ -55,7 +55,7 @@ function VaultCard({ vault }: { vault: Vault }) {
         <ChainProvider chain={vault.chain}>
           <ChainIcon
             client={client}
-            className="h-auto w-20 rounded-full mr-4"
+            className="h-auto w-12 rounded-full mr-3"
             loadingComponent={<span>Loading...</span>}
           />
         </ChainProvider>
