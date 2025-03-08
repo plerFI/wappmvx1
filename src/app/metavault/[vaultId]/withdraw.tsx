@@ -29,18 +29,14 @@ export default function Withdraw({ vaultContract, maxShares }: { vaultContract: 
   };
 
   return (
-    <div className="p-4 border rounded bg-zinc-900">
-      <h3 className="text-lg font-bold mb-2">Withdraw USDC</h3>
+    <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+      <h3 className="text-lg font-bold text-white mb-2">Withdraw USDC</h3>
 
-      {/* Eingabefeld für den Betrag */}
-      <label htmlFor="withdrawAmount" className="block text-sm text-gray-300">
-        Enter Amount:
-      </label>
+      {/* Eingabefeld für Betrag mit dunklerem Platzhalter */}
       <input
-        id="withdrawAmount"
         type="number"
         placeholder="Enter amount"
-        className="p-2 border rounded w-full mb-2"
+        className="p-2 w-full bg-white text-gray-900 rounded-md border-none placeholder-gray-600 focus:outline-none focus:ring-0"
         value={amount}
         onChange={(e) => {
           setAmount(e.target.value);
@@ -48,12 +44,8 @@ export default function Withdraw({ vaultContract, maxShares }: { vaultContract: 
         }}
       />
 
-      {/* Schieberegler mit Label & aria-label für Barrierefreiheit */}
-      <label htmlFor="withdrawSlider" className="block text-sm text-gray-300">
-        Select withdrawal percentage:
-      </label>
+      {/* Schieberegler für Prozentsatz */}
       <input
-        id="withdrawSlider"
         type="range"
         min="0"
         max="100"
@@ -69,10 +61,10 @@ export default function Withdraw({ vaultContract, maxShares }: { vaultContract: 
       />
       <p className="text-center text-sm text-gray-400">Selected: {percentage}% of your shares</p>
 
-      {/* Abheben-Button */}
+      {/* Withdraw-Button ohne blauen Schatten */}
       <button
         onClick={handleWithdraw}
-        className="bg-red-500 text-white px-4 py-2 rounded w-full"
+        className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 rounded-md mt-2 focus:outline-none focus:ring-0"
         disabled={isPending}
       >
         {isPending ? "Processing..." : "Withdraw"}

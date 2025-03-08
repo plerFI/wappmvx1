@@ -10,7 +10,7 @@ export default function Deposit({ vaultContract, isPanicActive }: { vaultContrac
   const { mutate: sendTransaction, isPending } = useSendTransaction();
 
   const handleDeposit = async () => {
-    if (!account || !vaultContract || isPanicActive) return; // Blockiert, wenn Panic Mode aktiv ist
+    if (!account || !vaultContract || isPanicActive) return; 
     try {
       const transaction: PreparedTransaction = prepareContractCall({
         contract: vaultContract,
@@ -26,19 +26,23 @@ export default function Deposit({ vaultContract, isPanicActive }: { vaultContrac
   };
 
   return (
-    <div className="p-4 border rounded bg-zinc-900">
-      <h3 className="text-lg font-bold mb-2">Deposit USDC</h3>
+    <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+      <h3 className="text-lg font-bold text-white mb-2">Deposit USDC</h3>
+      
+      {/* Input mit dunklerem Platzhalter */}
       <input
         type="number"
         placeholder="Enter amount"
-        className="p-2 border rounded w-full mb-2"
+        className="p-2 w-full bg-white text-gray-900 rounded-md border-none placeholder-gray-600 focus:outline-none focus:ring-0"
         value={amount}
         onChange={(e) => setAmount(e.target.value)}
       />
+
+      {/* Deposit-Button ohne blauen Schatten */}
       <button
         onClick={handleDeposit}
-        className={`px-4 py-2 rounded w-full ${
-          isPanicActive ? "bg-gray-500 text-gray-300 cursor-not-allowed" : "bg-blue-500 text-white"
+        className={`w-full text-white font-semibold py-2 rounded-md mt-2 focus:outline-none focus:ring-0 ${
+          isPanicActive ? "bg-gray-500 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
         }`}
         disabled={isPending || isPanicActive}
       >
