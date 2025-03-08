@@ -1,40 +1,31 @@
 "use client";
 
 import { useState } from "react";
-import { 
-  useActiveAccount, 
-  useSendTransaction, 
-  useReadContract,  
-} from "thirdweb/react";
-import { useContract } from "@thirdweb-dev/react";
+import { useActiveAccount, useSendTransaction } from "thirdweb/react";
 import { prepareContractCall, PreparedTransaction } from "thirdweb";
 
-export default function Deposit({ vaultContract, isPanicActive }: { vaultContract: any; isPanicActive: boolean }) {
+type DepositProps = {
+  vaultContract: any;
+  usdcContract: any;
+  isPanicActive: boolean;
+};
+
+export default function Deposit({ vaultContract, usdcContract, isPanicActive }: DepositProps) {
   const account = useActiveAccount();
   const [amount, setAmount] = useState("");
   const { mutate: sendTransaction, isPending } = useSendTransaction();
 
-  // Dynamisch die USDC-Adresse aus dem Vault-Contract lesen
-  const { data: usdcAddress, isLoading: isUsdcLoading } = useReadContract({
-    contract: vaultContract,
-    method: "function usdc() view returns (address)",
-    params: [],
-  });;
-
-  // Sobald die USDC-Adresse vorliegt, den USDC-Contract instanziieren
-  const { contract: usdcContract } = useContract(usdcAddress);
-
   const handleDeposit = async () => {
-    if (!account || !vaultContract || isPanicActive || isUsdcLoading || !usdcContract) return;
+    if (!account || !vaultContract || !usdcContract || isPanicActive) return;
     try {
-      // USDC verwendet üblicherweise 6 Dezimalstellen
+      // USDC verwendet in der Regel 6 Dezimalstellen
       const depositAmount = BigInt(amount) * BigInt(1e6);
 
       // Zuerst: Approve-Transaktion vorbereiten, damit der Vault-Contract USDC ausgeben darf
       const approveTx: PreparedTransaction = prepareContractCall({
-        contract: usdcContract as any,
+        contract: usdcContract,
         method: "function approve(address spender, uint256 amount)",
-        params: [vaultContract.getAddress(), depositAmount],
+        params: [vaultContract.address, depositAmount],
       });
 
       await new Promise<void>((resolve, reject) => {
@@ -93,7 +84,7 @@ export default function Deposit({ vaultContract, isPanicActive }: { vaultContrac
         className={`w-full text-white font-semibold py-2 rounded-md mt-2 focus:outline-none focus:ring-0 ${
           isPanicActive ? "bg-gray-500 cursor-not-allowed" : "bg-green-500 hover:bg-green-600"
         }`}
-        disabled={isPending || isPanicActive || isUsdcLoading}
+        disabled={isPending || isPanicActive}
       >
         {isPanicActive ? "Deposits Disabled (Panic Mode)" : isPending ? "Processing..." : "Deposit"}
       </button>

@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import { useParams } from "next/navigation";
-import { getVaultContract } from "../../contract";
+import { getContract } from "thirdweb";
+import { client } from "../../client";
+import { defineChain } from "thirdweb/chains";
+import { getVaultContract, getVaultUSDCAddress } from "../../contract";
 import Deposit from "./deposit";
 import Withdraw from "./withdraw";
 import Fees from "./Fees";
@@ -12,16 +15,30 @@ import PanicMode from "./PanicMode";
 export default function VaultPage() {
   const { vaultId } = useParams();
   const vaultContract = getVaultContract(vaultId as string);
+  const usdcAddress = getVaultUSDCAddress(vaultId as string);
+
+  // Bestimmen Sie die Chain für den jeweiligen Vault.
+  // Hier ein Beispiel: "base-vault" läuft auf der Base Chain (Chain-ID 8453), ansonsten wird Ethereum (Chain-ID 1) verwendet.
+  const chain =
+    vaultId === "base-vault" ? defineChain(8453) : defineChain(1);
+
+  // Instanziieren Sie den USDC-Contract direkt über getContract
+  const usdcContract = getContract({
+    client,
+    address: usdcAddress,
+    chain: chain,
+  });
 
   const [active, setActive] = useState<"Deposit" | "Withdraw">("Deposit");
   const [isPanicActive, setIsPanicActive] = useState(false);
 
-  if (!vaultId || !vaultContract)
+  if (!vaultId || !vaultContract || !usdcContract) {
     return (
       <div className="flex justify-center items-center h-screen">
         <p className="text-lg text-gray-400 animate-pulse">Loading Vault...</p>
       </div>
     );
+  }
 
   return (
     <div className="relative w-full bg-[#282828] px-6 py-8 sm:p-8 rounded-xl shadow-xl shadow-themeGreen/20 flex flex-col gap-7 max-w-3xl mx-auto">
@@ -32,22 +49,30 @@ export default function VaultPage() {
           onClick={() => setActive("Deposit")}
           className={`flex-1 ${
             active === "Deposit" ? "bg-themeGreen/80" : ""
-          } text-xs sm:text-sm cursor-pointer w-1/2 uppercase font-bold tracking-widest rounded-full text-themeWhite py-2.5 px-4`}>
+          } text-xs sm:text-sm cursor-pointer uppercase font-bold tracking-widest rounded-full text-themeWhite py-2.5 px-4`}>
           Deposit
         </button>
         <button
           onClick={() => setActive("Withdraw")}
           className={`flex-1 ${
             active === "Withdraw" ? "bg-themeGreen/80" : ""
-          } text-xs sm:text-sm cursor-pointer w-1/2 uppercase font-bold tracking-widest rounded-full text-themeWhite py-2.5 px-4`}>
+          } text-xs sm:text-sm cursor-pointer uppercase font-bold tracking-widest rounded-full text-themeWhite py-2.5 px-4`}>
           Withdraw
         </button>
       </div>
 
       {/* Dynamischer Inhalt je nach Auswahl */}
       <div className="p-4 bg-[#282828] w-full">
-        {active === "Deposit" && <Deposit vaultContract={vaultContract} isPanicActive={isPanicActive} />}
-        {active === "Withdraw" && <Withdraw vaultContract={vaultContract} maxShares={BigInt(100)} />}
+        {active === "Deposit" && (
+          <Deposit
+            vaultContract={vaultContract}
+            usdcContract={usdcContract}
+            isPanicActive={isPanicActive}
+          />
+        )}
+        {active === "Withdraw" && (
+          <Withdraw vaultContract={vaultContract} maxShares={BigInt(100)} />
+        )}
       </div>
 
       {/* Trennlinie */}
