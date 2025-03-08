@@ -1,47 +1,27 @@
 "use client";
 
 import { useReadContract } from "thirdweb/react";
-import { getVaultContract } from "@/app/contract"; // Import vault contract function
-import { useEffect, useState } from "react";
 
 export default function BestVaults({ contract }: { contract: any }) {
-  const [vaults, setVaults] = useState<string[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { data: bestVault1 } = useReadContract({
+    contract,
+    method: "function bestVaults(uint256) view returns (string)",
+    params: [BigInt(0)], // ✅ Verwende BigInt für die Parameter
+  });
 
-  useEffect(() => {
-    async function fetchBestVaults() {
-      try {
-        const bestVault1 = await contract.call("bestVaults", [0]);
-        const bestVault2 = await contract.call("bestVaults", [1]);
-        const bestVault3 = await contract.call("bestVaults", [2]);
+  const { data: bestVault2 } = useReadContract({
+    contract,
+    method: "function bestVaults(uint256) view returns (string)",
+    params: [BigInt(1)], // ✅ Verwende BigInt für die Parameter
+  });
 
-        setVaults([bestVault1, bestVault2, bestVault3]);
-      } catch (error) {
-        console.error("Error fetching best vaults:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
+  const { data: bestVault3 } = useReadContract({
+    contract,
+    method: "function bestVaults(uint256) view returns (string)",
+    params: [BigInt(2)], // ✅ Verwende BigInt für die Parameter
+  });
 
-    if (contract) {
-      fetchBestVaults();
-    }
-  }, [contract]);
+  if (!bestVault1 || !bestVault2 || !bestVault3) return "Loading...";
 
-  return (
-    <div className="p-4 border rounded bg-zinc-900">
-      <h3 className="text-lg font-bold mb-2">🔥 Top 3 Vaults</h3>
-      {loading ? (
-        <p>Loading best vaults...</p>
-      ) : (
-        <ol className="list-decimal pl-4">
-          {vaults.map((vault, index) => (
-            <li key={index} className="text-blue-400">
-              {vault}
-            </li>
-          ))}
-        </ol>
-      )}
-    </div>
-  );
+  return `${bestVault1}, ${bestVault2}, ${bestVault3}`;
 }

@@ -3,42 +3,76 @@
 import { useState } from "react";
 import { useParams } from "next/navigation";
 import { getVaultContract } from "../../contract";
-import PanicMode from "./PanicMode";
 import Deposit from "./Deposit";
 import Withdraw from "./Withdraw";
 import Fees from "./Fees";
 import BestVaults from "./BestVaults";
+import PanicMode from "./PanicMode";
 
 export default function VaultPage() {
   const { vaultId } = useParams();
-
-  // Hole den Smart Contract für diesen Vault
   const vaultContract = getVaultContract(vaultId as string);
 
-  // Zustand für Panic Mode, um Deposit zu deaktivieren
+  const [active, setActive] = useState<"Deposit" | "Withdraw">("Deposit");
   const [isPanicActive, setIsPanicActive] = useState(false);
 
-  if (!vaultId || !vaultContract) return <p className="text-center text-lg text-gray-300">Loading Vault...</p>;
+  if (!vaultId || !vaultContract)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <p className="text-lg text-gray-400 animate-pulse">Loading Vault...</p>
+      </div>
+    );
 
   return (
-    <div className="container mx-auto p-6 max-w-3xl">
-      <h1 className="text-3xl font-bold text-center text-white mb-6">{vaultId}</h1>
-
-      {/* Panic Mode Status */}
-      <PanicMode vaultContract={vaultContract} setPanicState={setIsPanicActive} />
-
-      {/* Gebührenübersicht */}
-      <Fees vaultId={vaultId as string} />
-
-      {/* Deposit & Withdraw Funktionen */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-        <Deposit vaultContract={vaultContract} isPanicActive={isPanicActive} />
-        <Withdraw vaultContract={vaultContract} maxShares={BigInt(100)} /> {/* Placeholder für maxShares */}
+    <div className="relative w-full bg-[#282828] px-6 py-8 sm:p-8 rounded-xl shadow-xl shadow-themeGreen/20 flex flex-col gap-7 max-w-3xl mx-auto">
+      
+      {/* Deposit / Withdraw Umschalter */}
+      <div className="flex border border-themeWhite/70 rounded-full overflow-hidden">
+        <button
+          onClick={() => setActive("Deposit")}
+          className={`flex-1 ${
+            active === "Deposit" ? "bg-themeGreen/80" : ""
+          } text-xs sm:text-sm cursor-pointer w-1/2 uppercase font-bold tracking-widest rounded-full text-themeWhite py-2.5 px-4`}>
+          Deposit
+        </button>
+        <button
+          onClick={() => setActive("Withdraw")}
+          className={`flex-1 ${
+            active === "Withdraw" ? "bg-themeGreen/80" : ""
+          } text-xs sm:text-sm cursor-pointer w-1/2 uppercase font-bold tracking-widest rounded-full text-themeWhite py-2.5 px-4`}>
+          Withdraw
+        </button>
       </div>
 
-      {/* Beste Vaults Empfehlung */}
-      <div className="mt-6">
-        <BestVaults contract={vaultContract} />
+      {/* Dynamischer Inhalt je nach Auswahl */}
+      <div className="p-4 bg-gray-900 rounded-lg w-full">
+        {active === "Deposit" && <Deposit vaultContract={vaultContract} isPanicActive={isPanicActive} />}
+        {active === "Withdraw" && <Withdraw vaultContract={vaultContract} maxShares={BigInt(100)} />}
+      </div>
+
+      {/* Trennlinie */}
+      <div className="border-b border-gray-700 my-4"></div>
+
+      {/* Vault-Informationen als reiner Text */}
+      <div className="flex flex-col gap-2">
+        <div className="flex justify-between items-center">
+          <p className="text-sm text-themeWhite font-Poppins tracking-widest uppercase font-medium">Pool Status</p>
+          <p className="text-xs text-themeWhite font-Poppins tracking-widest font-semibold">
+            {isPanicActive ? "Inactive" : "Active"}
+          </p>
+        </div>
+        <div className="flex justify-between items-center">
+          <p className="text-sm text-themeWhite font-Poppins tracking-widest uppercase font-medium">Vault Fees</p>
+          <p className="text-xs text-themeWhite font-Poppins tracking-widest font-semibold">
+            <Fees vaultId={vaultId as string} />
+          </p>
+        </div>
+        <div className="flex justify-between items-center">
+          <p className="text-sm text-themeWhite font-Poppins tracking-widest uppercase font-medium">Best Vaults</p>
+          <p className="text-xs text-themeWhite font-Poppins tracking-widest font-semibold">
+            <BestVaults contract={vaultContract} />
+          </p>
+        </div>
       </div>
     </div>
   );
