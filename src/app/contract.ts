@@ -11,7 +11,7 @@ interface VaultContracts {
 export const vaultContracts: VaultContracts = {
   "base-vault": getContract({
     client,
-    address: "0x1234567890abcdef1234567890abcdef12345678", // Vault 1 Contract
+    address: "0x175fD51BA7fE09c7dFfe857ebb99A2F15dE9a858", // Vault 1 Contract
     chain: defineChain(8453), // Base Chain
   }),
   /* "ethereum-vault": getContract({
