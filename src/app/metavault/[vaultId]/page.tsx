@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams } from "next/navigation";
 import { getVaultContract } from "../../contract";
 import Deposit from "./Deposit";
-import Withdraw from "./Withdraw";
+import Withdraw from "./withdraw";
 import Fees from "./Fees";
 import BestVaults from "./BestVaults";
 import PanicMode from "./PanicMode";
@@ -45,7 +45,7 @@ export default function VaultPage() {
       </div>
 
       {/* Dynamischer Inhalt je nach Auswahl */}
-      <div className="p-4 bg-gray-900 rounded-lg w-full">
+      <div className="p-4 bg-[#282828] w-full">
         {active === "Deposit" && <Deposit vaultContract={vaultContract} isPanicActive={isPanicActive} />}
         {active === "Withdraw" && <Withdraw vaultContract={vaultContract} maxShares={BigInt(100)} />}
       </div>

@@ -26,7 +26,7 @@ export default function Deposit({ vaultContract, isPanicActive }: { vaultContrac
   };
 
   return (
-    <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+    <div className="bg-[#1d1d1d] p-4 rounded-lg shadow-md">
       <h3 className="text-lg font-bold text-white mb-2">Deposit USDC</h3>
       
       {/* Input mit dunklerem Platzhalter */}

@@ -29,7 +29,7 @@ export default function Withdraw({ vaultContract, maxShares }: { vaultContract: 
   };
 
   return (
-    <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+    <div className="bg-[#1d1d1d] p-4 rounded-lg shadow-md">
       <h3 className="text-lg font-bold text-white mb-2">Withdraw USDC</h3>
 
       {/* Eingabefeld für Betrag mit dunklerem Platzhalter */}
@@ -64,7 +64,7 @@ export default function Withdraw({ vaultContract, maxShares }: { vaultContract: 
       {/* Withdraw-Button ohne blauen Schatten */}
       <button
         onClick={handleWithdraw}
-        className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-2 rounded-md mt-2 focus:outline-none focus:ring-0"
+        className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-md mt-2 focus:outline-none focus:ring-0"
         disabled={isPending}
       >
         {isPending ? "Processing..." : "Withdraw"}
