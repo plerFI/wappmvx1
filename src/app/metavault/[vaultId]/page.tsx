@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useParams } from "next/navigation";
 import { getVaultContract } from "../../contract";
-import Deposit from "./Deposit";
+import Deposit from "./deposit";
 import Withdraw from "./withdraw";
 import Fees from "./Fees";
 import BestVaults from "./BestVaults";
