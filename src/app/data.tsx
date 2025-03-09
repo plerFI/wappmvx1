@@ -24,11 +24,13 @@ export function useVaultData(vaultId: string) {
     params: [],
   });
 
-  const { data: tvl, isPending: isTvlLoading } = useReadContract({
+  const { data: rawTvl, isPending: isTvlLoading } = useReadContract({ 
     contract,
     method: "function getTVL() view returns (uint256)",
     params: [],
   });
+  
+  const tvl = rawTvl ? rawTvl / 1_000_000n : undefined; 
 
   const { data: apy, isPending: isApyLoading } = useReadContract({
     contract,
